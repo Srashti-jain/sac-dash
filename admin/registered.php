@@ -85,20 +85,21 @@ include('includes/sidebar.php') ;
                             include("config/dbcon.php");
                             $company="SELECT * FROM `company`";
                             $all_com = mysqli_query($con,$company);
-                          ?>
-                          <?php
-                             while ($comp = mysqli_fetch_array(
+                            // $row=mysqli_num_rows($all_com);
+                                // die();
+
+                            while ($comp = mysqli_fetch_array(
                              $all_com,MYSQLI_ASSOC)):;
 
-                          ?>
+                           ?>
                             <option value="<?php echo $comp["company_id"];?>"
-                             <?php if(isset($company['company_id']) && $company['company_id']==$comp["company_id"])
+                             <?php if(isset($row['company_id']) && $row['company_id']==$comp["company_id"])
                              {echo 'selected="selected"';} ?>>
                                 <?php echo $comp["company_name"]; ?>
                             </option>
                             <?php
                              endwhile;
-                              ?>
+                            ?>
                   </select>
                 </div>
 
